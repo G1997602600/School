@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename Java project &apos;school_app_hibernate&apos; to &apos;school-app-hibernate&apos;&#x0D;&#x0A;- Original element: &apos;school_app_hibernate&apos;&#x0D;&#x0A;- Renamed element: &apos;school_app_hibernate&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename Java project &apos;school_app_hibernate&apos;" flags="7" id="org.eclipse.jdt.ui.rename.java.project" input="=school_app_hibernate" name="school-app-hibernate" references="true" stamp="1664251694836" version="1.0"/>
+</session>

@@ -1,0 +1,5 @@
+package school_app_hibernate_dao;
+
+public class UserDao {
+
+}

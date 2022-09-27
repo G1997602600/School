@@ -1,0 +1,18 @@
+package com.ty.controller;
+
+import java.util.List;
+
+import com.ty.dao.UserDAO;
+import com.ty.dto.User;
+
+public class GetAllUserDriver {
+	public static void main(String[] args) {
+		UserDAO userDAO=new UserDAO();
+		List<User> list=userDAO.getAllUser();
+		
+		for (User user : list) {
+			System.out.println(user);
+		}
+	}
+
+}

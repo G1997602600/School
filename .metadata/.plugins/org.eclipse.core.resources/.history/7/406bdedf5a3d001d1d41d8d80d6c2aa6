@@ -1,0 +1,18 @@
+package user;
+
+public class Demo {
+	static int a;
+	int b;
+	Demo(){
+		a=12;
+		b=16;
+	}
+	public static void main(String[] args) {
+		
+		Demo d= new Demo();
+		System.out.println(d.b);
+		System.out.println(d.a);
+		System.out.println(a);
+		System.out.println(Demo.a);
+	}
+}

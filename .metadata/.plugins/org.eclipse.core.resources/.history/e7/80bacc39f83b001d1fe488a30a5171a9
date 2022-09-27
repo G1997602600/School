@@ -1,0 +1,24 @@
+package com.ty.controller;
+
+import java.util.Scanner;
+
+import com.ty.dao.UserDAO;
+import com.ty.dto.User;
+
+public class ValidateUserDriver {
+	public static void main(String[] args) {
+		Scanner scanner=new Scanner(System.in);
+		System.out.println("enter your email");
+		String email=scanner.next();
+		System.out.println("enter your password");
+		String password=scanner.next();
+		UserDAO userDAO=new UserDAO();
+		User user=userDAO.getUserByEmailAndPassword(email, password);
+		if (user!=null) {
+			System.out.println("welcome "+user.getName());
+		}else {
+			System.out.println("invalid credintials");
+		}
+	}
+
+}

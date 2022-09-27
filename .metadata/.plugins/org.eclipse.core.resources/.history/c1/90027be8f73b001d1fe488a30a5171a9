@@ -1,0 +1,16 @@
+package com.ty.controller;
+
+import java.util.Scanner;
+
+import ty.dao.StudentDao;
+
+public class DeleteStudentDriver {
+	public static void main(String[] args) {
+		Scanner scanner=new Scanner(System.in);
+		System.out.println("enter id for deleting");
+		int id=scanner.nextInt();
+		StudentDao studentDao=new StudentDao();
+		System.out.println(studentDao.deleteStudent(id));
+	}
+
+}

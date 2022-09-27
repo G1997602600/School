@@ -1,0 +1,28 @@
+package com.ty.controller;
+
+import java.util.Scanner;
+
+import com.ty.dao.UserDAO;
+import com.ty.dto.User;
+
+public class InsertUserDriver {
+	public static void main(String[] args) {
+		Scanner scanner=new Scanner(System.in);
+		User user=new User();
+		System.out.println("enter id");
+		user.setId(scanner.nextInt());
+		System.out.println("enter name");
+		user.setName(scanner.next());
+		System.out.println("enter age");
+		user.setAge(scanner.nextInt());
+		System.out.println("enter email");
+		user.setEmail(scanner.next());
+		System.out.println("enter password");
+		user.setPassword(scanner.next());
+		System.out.println("enter gender");
+		user.setGender(scanner.next());
+		UserDAO userDAO=new UserDAO();
+		System.out.println(userDAO.addUser(user));
+	}
+
+}

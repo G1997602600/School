@@ -1,0 +1,27 @@
+package com.ty.controller;
+
+import java.util.Scanner;
+
+import com.ty.dao.TeacherDAO;
+import com.ty.dto.Teacher;
+
+public class InsertTeacherDriver {
+	public static void main(String[] args) {
+		Scanner scanner=new Scanner(System.in);
+		Teacher teacher=new Teacher();
+		TeacherDAO teacherDAO=new TeacherDAO();
+		System.out.println("enter id");
+		teacher.setId(scanner.nextInt());
+		System.out.println("enter name");
+		teacher.setName(scanner.next());
+		System.out.println("enter subject");
+		teacher.setSubject(scanner.next());
+		System.out.println("enter salary");
+		teacher.setSalary(scanner.nextDouble());
+		
+		
+		System.out.println(teacherDAO.addTeacher(teacher));
+		
+	}
+
+}

@@ -1,0 +1,185 @@
+package com.ty.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ty.dto.Student;
+import com.ty.dto.Teacher;
+
+public class TeacherDAO {
+	String path = "com.mysql.cj.jdbc.Driver";
+	String url = "jdbc:mysql://localhost:3306/jdbc_school";
+	String user = "root";
+	String password = "root";
+	Connection connection = null;
+
+	public String addTeacher(Teacher u) {
+		String query = "INSERT INTO teacher VALUES (?,?,?,?)";
+		try {
+			Class.forName(path);
+			connection = DriverManager.getConnection(url, user, password);
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, u.getId());
+			preparedStatement.setString(2, u.getName());
+			preparedStatement.setString(3, u.getSubject());
+			preparedStatement.setDouble(4, u.getSalary());
+			int a = preparedStatement.executeUpdate();
+			if (a == 1) {
+				return "saved";
+			}
+		} catch (ClassNotFoundException e) {
+
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return "not saved";
+	}
+
+	public String updateTeacher(Teacher u) {
+		String query = "update teacher set name=?,subject=?,salary=? where id=?";
+		try {
+			Class.forName(path);
+			connection = DriverManager.getConnection(url, user, password);
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(4, u.getId());
+			preparedStatement.setString(1, u.getName());
+			preparedStatement.setString(2, u.getSubject());
+			preparedStatement.setDouble(3, u.getSalary());
+			
+			int a = preparedStatement.executeUpdate();
+			if (a == 1) {
+				return "updated successfully";
+			}
+		} catch (ClassNotFoundException e) {
+
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return "not updated successfully";
+	}
+
+	public String deleteTeacher(int id) {
+		String query="delete from teacher where id=? ";
+		try {
+			connection=DriverManager.getConnection(url,user,password);
+			PreparedStatement preparedStatement=connection.prepareStatement(query);
+			preparedStatement.setInt(1, id);
+			int a=preparedStatement.executeUpdate();
+			if (a==1) {
+				return "deleted successfully";
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return "not deleted";
+	}
+	
+	
+	public List<Teacher> getAllTeacher()
+	{
+		String query="select * from teacher";
+		ResultSet resultSet=null;
+		
+		try {
+			Class.forName(path);
+			connection=DriverManager.getConnection(url,user,password);
+			PreparedStatement preparedStatement=connection.prepareStatement(query);
+			 resultSet=preparedStatement.executeQuery();
+			 if(resultSet!=null)
+			 {
+				 List<Teacher> list=new ArrayList<Teacher>();
+				while (resultSet.next()) {
+					Teacher teacher=new Teacher();
+					teacher.setId(resultSet.getInt(1));
+					teacher.setName(resultSet.getString(2));
+					teacher.setSubject(resultSet.getString(3));
+					teacher.setSalary(resultSet.getDouble(4));
+					list.add(teacher);
+				}
+				return list;
+			 }
+		}catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	public Teacher getTeacher(int id)   {
+		String query="select * from teacher where id=?";
+		ResultSet resultSet=null;
+		
+		try {
+			Class.forName(path);
+			connection=DriverManager.getConnection(url,user,password);
+			PreparedStatement preparedStatement=connection.prepareStatement(query);
+			preparedStatement.setInt(1, id);
+			 resultSet=preparedStatement.executeQuery();
+			 if(resultSet!=null)
+			 {
+				while (resultSet.next()) {
+					Teacher teacher=new Teacher();
+					teacher.setId(resultSet.getInt(1));
+					teacher.setName(resultSet.getString(2));
+					teacher.setSubject(resultSet.getString(3));
+					teacher.setSalary(resultSet.getDouble(4));
+					return teacher;
+				}
+			 }
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+		
+
+
+}

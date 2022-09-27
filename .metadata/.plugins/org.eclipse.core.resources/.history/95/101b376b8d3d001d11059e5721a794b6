@@ -1,0 +1,24 @@
+package ty.controller;
+
+import java.util.Scanner;
+
+import ty.dao.StudentDao;
+import ty.dto.Student;
+
+public class UpdateStudentDriver {
+	public static void main(String[] args) {
+		Scanner scanner=new Scanner(System.in);
+		StudentDao studentDao=new StudentDao();
+		Student student=new Student();
+		System.out.println("enter id for updating");
+		student.setId(scanner.nextInt());
+		System.out.println("enter name");
+		student.setName(scanner.next());
+		System.out.println("enter age");
+		student.setAge(scanner.nextInt());
+		System.out.println("enter phone");
+		student.setPhone(scanner.nextLong());
+		System.out.println(studentDao.updateStudent(student));;
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;Student.java&apos; to &apos;school_app_hibernate/src/main/java/school_app_hibernate_dto&apos;&#x0D;&#x0A;- Original project: &apos;jdbc_maven1&apos;&#x0D;&#x0A;- Destination element: &apos;school_app_hibernate/src/main/java/school_app_hibernate_dto&apos;&#x0D;&#x0A;- Original element: &apos;ty.dto.Student.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="=school_app_hibernate/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;school_app_hibernate_dto" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;ty.dto{Student.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1664191311765" units="1" version="1.0"/>
+</session>
